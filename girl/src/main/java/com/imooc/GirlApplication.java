@@ -5,15 +5,23 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.imooc.threadProcessor.myRunable;
 import com.imooc.threadProcessor.myThreadPoolProcessor;
+import com.imooc.utils.DateUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.Map;
 
 @SpringBootApplication
 public class GirlApplication {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, ParseException {
+
+        //将特殊格式的日期时间型字符串转换为Date类型
+        String strDate = "Wed Aug 08 16:28:44 +0800 2018";
+        Date date = DateUtil.parse(strDate, "EEE MMM dd HH:mm:ss Z yyyy");
+
 
         myThreadPoolProcessor.myPool();
         //myThreadPoolProcessor.myPool2();
