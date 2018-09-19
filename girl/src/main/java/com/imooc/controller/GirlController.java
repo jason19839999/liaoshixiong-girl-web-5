@@ -10,6 +10,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.imooc.domain.Girl;
 import com.imooc.domain.Result;
+import com.imooc.enums.ResultEnum;
+import com.imooc.exception.GirlException;
 import com.imooc.repository.GirlRepository;
 import com.imooc.service.GirlService;
 import com.imooc.threadProcessor.myRunable;
@@ -89,6 +91,8 @@ public class GirlController {
             jsonResult = objectMapper.writeValueAsString(result);
         } catch (Exception ex) {
             logger.info(ex.getStackTrace().toString());
+            //正常抛出系统异常  记录错误日志信息
+            throw new GirlException(ResultEnum.UNKONW_ERROR);
         }
 
         //自定义实体类型序列化与反序列化
