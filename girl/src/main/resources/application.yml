@@ -3,12 +3,17 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+    url: jdbc:mysql://192.168.2.218:3306/miningstock?autoReconnect=true&useUnicode=true&amp;characterEncoding=utf8"
     username: root
-    password: 123456
+    password: stock99admin81
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
+
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+#    username: root
+#    password: 123456
 

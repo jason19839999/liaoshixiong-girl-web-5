@@ -63,17 +63,17 @@ public class GirlController {
         tmp = new JSONObject();
         tmp.put("name", "lisi");
         name.add(tmp);
-        result.put("name", name);
+        result.put("nameParent", name);
 
 
         //Integer类型的数组
         List<Integer> age = new ArrayList<Integer>();
         age.add(18);
         age.add(19);
-        result.put("age", age);
+        result.put("ageParent", age);
 
-        JSONArray jarry = result.getJSONArray("name");
-        JSONArray jarryAge = result.getJSONArray("age");
+        JSONArray jarry = result.getJSONArray("nameParent");
+        JSONArray jarryAge = result.getJSONArray("ageParent");
         if (jarry != null && jarry.size() > 0) {
             for (int i = 0; i < jarry.size(); i++) {
                 System.out.println(jarry.getJSONObject(i).getString("name"));
@@ -85,10 +85,14 @@ public class GirlController {
             }
         }
 
-        //JSONObject序列化成json
+
         String jsonResult = "";
         try {
+            //JSONObject序列化成json
             jsonResult = objectMapper.writeValueAsString(result);
+
+            //直接转化成json串了
+            jsonResult = JSONObject.toJSONString(result);
         } catch (Exception ex) {
             logger.info(ex.getStackTrace().toString());
             //正常抛出系统异常  记录错误日志信息
