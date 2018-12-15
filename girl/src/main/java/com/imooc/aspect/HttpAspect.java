@@ -6,6 +6,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -23,8 +24,14 @@ public class HttpAspect {
     private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
     //用户身份验证用这个搞， throw new GirlException(ResultEnum.USERAACOUNT_ERROR);
+    @Order(1)
     @Pointcut("execution(public * com.imooc.controller.GirlController.*(..))")
     public void log() {
+    }
+
+    @Order(2)
+    @Pointcut("execution(public * com.imooc.controller.GirlController.*(..))")
+    public void log2() {
     }
 
     @Before("log()")
@@ -61,6 +68,7 @@ public class HttpAspect {
         }
 
     }
+
 
     @After("log()")
     public void doAfter() {

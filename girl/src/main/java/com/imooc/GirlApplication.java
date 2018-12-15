@@ -23,8 +23,8 @@ public class GirlApplication {
         Date date = DateUtil.parse(strDate, "EEE MMM dd HH:mm:ss Z yyyy");
 
 
-        myThreadPoolProcessor.myPool();
-        //myThreadPoolProcessor.myPool2();
+//        myThreadPoolProcessor.myPool();
+        myThreadPoolProcessor.myPool2();
 
         //myCallablePorcessor.myCallable();
         //JsonObjectDeal();
