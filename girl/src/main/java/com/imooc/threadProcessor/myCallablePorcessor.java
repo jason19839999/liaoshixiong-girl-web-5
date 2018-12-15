@@ -5,7 +5,7 @@ import java.util.concurrent.FutureTask;
 
 public class myCallablePorcessor {
     public static void myCallable() {
-        FutureTask<String> task = new FutureTask<String>(new MyCallableTask());
+        FutureTask<String> task = new FutureTask<String>(new MyCallableTask("0"));
         new Thread(task).start();
         try {
             Thread.sleep(250);
@@ -30,15 +30,3 @@ public class myCallablePorcessor {
 
 }
 
-
-class MyCallableTask implements Callable<String> {
-    public String call() throws Exception {
-        int num = 0;
-        for (int i = 0; i < 10; i++) {
-            Thread.sleep(50);
-            num++;
-            System.out.println("num=" + num);
-        }
-        return String.valueOf(num);
-    }
-}
