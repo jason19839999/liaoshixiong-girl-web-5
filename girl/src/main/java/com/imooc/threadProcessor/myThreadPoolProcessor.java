@@ -11,6 +11,8 @@ public class myThreadPoolProcessor {
         service.execute(new PrintStr("A"));// AB同时执行
         service.execute(new PrintStr("B"));
         service.execute(new PrintStr("C"));// 在AB完成后执行
+        service.execute(new PrintStr("D"));// 在AB完成后执行
+        service.execute(new PrintStr("E"));// 在AB完成后执行
         service.shutdown();
     }
 
