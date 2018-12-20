@@ -7,11 +7,18 @@ import java.util.concurrent.Future;
 public class myThreadPoolProcessor {
     //我创建了一个包含2条线程的线程池，但执行3个任务，从结果可以看出第三个任务使用的线程名称与第一个任务相同，即任务3与任务1使用同一条线程。
     // 还可以看出，任务3实在前两个任务完成后再执行的。
-    public static void myPool() {
+    public static void myPool() throws Exception {
         ExecutorService service = Executors.newFixedThreadPool(2);
         service.execute(new PrintStr("A"));// AB同时执行
         service.execute(new PrintStr("B"));
         service.execute(new PrintStr("C"));// 在AB完成后执行
+        service.execute(new PrintStr("D"));// 在AB完成后执行
+        service.execute(new PrintStr("E"));// 在AB完成后执行
+        //调用runable 如果正常返回0 ，否则返回 大于0的数
+        Future<?> future = service.submit(new PrintStr("E"));
+        //调用callable 自定义返回值
+        Future<String> future2 = service.submit(new MyCallableTask("0"));
+        String result = future2.get();
         service.shutdown();
     }
 
@@ -46,6 +53,7 @@ class PrintStr implements Runnable {
     }
 
     public void run() {
+        int i = 1/0;
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {

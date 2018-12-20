@@ -16,7 +16,7 @@ import java.util.Map;
 @SpringBootApplication
 public class GirlApplication {
 
-    public static void main(String[] args) throws InterruptedException, ParseException {
+    public static void main(String[] args) throws Exception {
 
         //将特殊格式的日期时间型字符串转换为Date类型
         String strDate = "Wed Aug 08 16:28:44 +0800 2018";
