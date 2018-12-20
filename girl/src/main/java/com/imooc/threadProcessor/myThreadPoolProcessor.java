@@ -2,6 +2,7 @@ package com.imooc.threadProcessor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class myThreadPoolProcessor {
     //我创建了一个包含2条线程的线程池，但执行3个任务，从结果可以看出第三个任务使用的线程名称与第一个任务相同，即任务3与任务1使用同一条线程。
@@ -30,6 +31,7 @@ public class myThreadPoolProcessor {
         }
         service.execute(new PrintStr("D"));// 会复用空闲的Thread
         service.execute(new PrintStr("E"));// 会复用空闲的Thread
+        Future<String> future = service.submit(new MyCallableTask());
         service.shutdown();
     }
 
