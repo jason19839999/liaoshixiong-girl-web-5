@@ -39,6 +39,7 @@ public class myThreadPoolProcessor {
         }
         service.execute(new PrintStr("D"));// 会复用空闲的Thread
         service.execute(new PrintStr("E"));// 会复用空闲的Thread
+        Future<String> future = service.submit(new MyCallableTask());
         service.shutdown();
     }
 
