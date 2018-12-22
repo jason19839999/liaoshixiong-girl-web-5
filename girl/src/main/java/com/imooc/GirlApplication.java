@@ -28,7 +28,7 @@ public class GirlApplication {
 
         //myCallablePorcessor.myCallable();
         //JsonObjectDeal();
-        dealMyRunable();
+//        dealMyRunable();
         SpringApplication.run(GirlApplication.class, args);
     }
 
